@@ -31,8 +31,10 @@ namespace Dynamo.Applications
                 "ProtoGeometry.dll",
                 "DesignScriptBuiltin.dll",
                 "DSCoreNodes.dll",
+#if !OPEN_GEOMETRY
                 "DSOffice.dll",
                 "DSCPython.dll",
+#endif
                 "FunctionObject.ds",
                 "BuiltIn.ds",
                 "DynamoConversions.dll",
@@ -123,8 +125,10 @@ namespace Dynamo.Applications
                 "ProtoGeometry.dll",
                 "DesignScriptBuiltin.dll",
                 "DSCoreNodes.dll",
+#if !OPEN_GEOMETRY
                 "DSOffice.dll",
                 "DSCPython.dll",
+#endif
                 "FunctionObject.ds",
                 "BuiltIn.ds",
                 "DynamoConversions.dll",

@@ -312,6 +312,9 @@ namespace DSCore
 
                 switch (value)
                 {
+                    case Mesh item:
+                        writer.WriteRawValue(item.ToJson());
+                        return;
                     case Geometry item:
                         var geoString = item.ToJson();
 
@@ -325,9 +328,6 @@ namespace DSCore
                         writer.WriteRawValue(item.ToJson());
                         return;
                     case CoordinateSystem item:
-                        writer.WriteRawValue(item.ToJson());
-                        return;
-                    case Mesh item:
                         writer.WriteRawValue(item.ToJson());
                         return;
                     case Vector item:
@@ -350,7 +350,14 @@ namespace DSCore
 
             public override bool CanConvert(Type objectType)
             {
+#if OPEN_GEOMETRY
+                return typeof(Geometry).IsAssignableFrom(objectType)
+                    || typeof(BoundingBox).IsAssignableFrom(objectType)
+                    || typeof(CoordinateSystem).IsAssignableFrom(objectType)
+                    || typeof(Vector).IsAssignableFrom(objectType);
+#else
                 return typeof(DesignScriptEntity).IsAssignableFrom(objectType);
+#endif
             }
         }
 
